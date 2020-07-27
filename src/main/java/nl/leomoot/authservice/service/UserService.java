@@ -1,31 +1,44 @@
-package com.clone.instagram.authservice.service;
+package nl.leomoot.authservice.service;
 
-import com.clone.instagram.authservice.exception.*;
-import com.clone.instagram.authservice.model.InstaUserDetails;
-import com.clone.instagram.authservice.model.Role;
-import com.clone.instagram.authservice.repository.UserRepository;
-import com.clone.instagram.authservice.model.User;
-import lombok.extern.slf4j.Slf4j;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Optional;
+import lombok.extern.slf4j.Slf4j;
+import nl.leomoot.authservice.exception.BadRequestException;
+import nl.leomoot.authservice.exception.EmailAlreadyExistsException;
+import nl.leomoot.authservice.exception.InternalServerException;
+import nl.leomoot.authservice.exception.ResourceNotFoundException;
+import nl.leomoot.authservice.exception.UsernameAlreadyExistsException;
+import nl.leomoot.authservice.model.CustomerUserDetails;
+import nl.leomoot.authservice.model.Role;
+import nl.leomoot.authservice.model.User;
+import nl.leomoot.authservice.repository.UserRepository;
 
 @Service
 @Slf4j
 public class UserService {
 
-    @Autowired private PasswordEncoder passwordEncoder;
-    @Autowired private UserRepository userRepository;
-    @Autowired private AuthenticationManager authenticationManager;
-    @Autowired private JwtTokenManager jwtTokenManager;
-    @Autowired private TotpManager totpManager;
+    @Autowired 
+    private PasswordEncoder passwordEncoder;
+    
+    @Autowired 
+    private UserRepository userRepository;
+    
+    @Autowired 
+    private AuthenticationManager authenticationManager;
+    
+    @Autowired 
+    private JwtTokenManager jwtTokenManager;
+    
+    @Autowired 
+    private TotpManager totpManager;
 
     public String loginUser(String username, String password) {
        Authentication authentication = authenticationManager
@@ -42,14 +55,15 @@ public class UserService {
     public String verify(String username, String code) {
         User user = userRepository
                 .findByUsername(username)
-                .orElseThrow(() -> new ResourceNotFoundException( String.format("username %s", username)));
+            .orElseThrow(
+                () -> new ResourceNotFoundException(String.format("username %s", username)));
 
         if(!totpManager.verifyCode(code, user.getSecret())) {
             throw new BadRequestException("Code is incorrect");
         }
 
         return Optional.of(user)
-                .map(InstaUserDetails::new)
+                .map(CustomerUserDetails::new)
                 .map(userDetails -> new UsernamePasswordAuthenticationToken(
                         userDetails, null, userDetails.getAuthorities()))
                 .map(jwtTokenManager::generateToken)
@@ -75,9 +89,7 @@ public class UserService {
         }
         user.setActive(true);
         user.setPassword(passwordEncoder.encode(user.getPassword()));
-        user.setRoles(new HashSet<>() {{
-            add(role);
-        }});
+        user.setRoles(new HashSet<>(Arrays.asList(role)));
 
         if(user.isMfa()) {
             user.setSecret(totpManager.generateSecret());

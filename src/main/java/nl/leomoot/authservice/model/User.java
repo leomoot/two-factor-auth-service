@@ -1,4 +1,4 @@
-package com.clone.instagram.authservice.model;
+package nl.leomoot.authservice.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;

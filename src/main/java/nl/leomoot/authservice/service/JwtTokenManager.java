@@ -1,6 +1,6 @@
-package com.clone.instagram.authservice.service;
+package nl.leomoot.authservice.service;
 
-import com.clone.instagram.authservice.config.JwtConfig;
+import nl.leomoot.authservice.config.JwtConfig;
 import io.jsonwebtoken.*;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.Authentication;

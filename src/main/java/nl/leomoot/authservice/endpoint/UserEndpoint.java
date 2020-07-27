@@ -1,10 +1,10 @@
-package com.clone.instagram.authservice.endpoint;
+package nl.leomoot.authservice.endpoint;
 
-import com.clone.instagram.authservice.exception.*;
-import com.clone.instagram.authservice.model.InstaUserDetails;
-import com.clone.instagram.authservice.model.User;
-import com.clone.instagram.authservice.payload.*;
-import com.clone.instagram.authservice.service.UserService;
+import nl.leomoot.authservice.exception.ResourceNotFoundException;
+import nl.leomoot.authservice.model.CustomerUserDetails;
+import nl.leomoot.authservice.model.User;
+import nl.leomoot.authservice.payload.UserSummary;
+import nl.leomoot.authservice.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -43,7 +43,7 @@ public class UserEndpoint {
     @GetMapping(value = "/users/me", produces = MediaType.APPLICATION_JSON_VALUE)
     @PreAuthorize("hasRole('USER') or hasRole('FACEBOOK_USER')")
     @ResponseStatus(HttpStatus.OK)
-    public UserSummary getCurrentUser(@AuthenticationPrincipal InstaUserDetails userDetails) {
+    public UserSummary getCurrentUser(@AuthenticationPrincipal CustomerUserDetails userDetails) {
         return UserSummary
                 .builder()
                 .id(userDetails.getId())

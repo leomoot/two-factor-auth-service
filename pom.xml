@@ -3,12 +3,12 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>com.clone.instegram</groupId>
-	<artifactId>auth-service</artifactId>
+	<groupId>nl.leomoot</groupId>
+	<artifactId>two-factor-auth-service</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>auth-service</name>
+	<name>two-factor-auth-service</name>
 	<description>Spring security jwt and social login</description>
 
 	<parent>

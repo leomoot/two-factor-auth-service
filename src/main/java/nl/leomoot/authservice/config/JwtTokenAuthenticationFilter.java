@@ -1,8 +1,8 @@
-package com.clone.instagram.authservice.config;
+package nl.leomoot.authservice.config;
 
-import com.clone.instagram.authservice.model.InstaUserDetails;
-import com.clone.instagram.authservice.service.JwtTokenManager;
-import com.clone.instagram.authservice.service.UserService;
+import nl.leomoot.authservice.model.CustomerUserDetails;
+import nl.leomoot.authservice.service.JwtTokenManager;
+import nl.leomoot.authservice.service.UserService;
 import io.jsonwebtoken.Claims;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -58,7 +58,7 @@ public class JwtTokenAuthenticationFilter extends OncePerRequestFilter {
 
             UsernamePasswordAuthenticationToken auth =
                     userService.findByUsername(username)
-                            .map(InstaUserDetails::new)
+                            .map(CustomerUserDetails::new)
                             .map(userDetails -> {
                                 UsernamePasswordAuthenticationToken authentication =
                                         new UsernamePasswordAuthenticationToken(
@@ -78,5 +78,4 @@ public class JwtTokenAuthenticationFilter extends OncePerRequestFilter {
         // go to the next filter in the filter chain
         chain.doFilter(request, response);
     }
-
 }

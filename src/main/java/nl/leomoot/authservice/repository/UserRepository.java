@@ -1,9 +1,8 @@
-package com.clone.instagram.authservice.repository;
+package nl.leomoot.authservice.repository;
 
-import com.clone.instagram.authservice.model.User;
+import nl.leomoot.authservice.model.User;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import java.util.Optional;
-
 
 public interface UserRepository extends MongoRepository<User, String> {
 

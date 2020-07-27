@@ -1,15 +1,14 @@
-package com.clone.instagram.authservice.model;
+package nl.leomoot.authservice.model;
 
+import java.util.Collection;
+import java.util.stream.Collectors;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-import java.util.Collection;
-import java.util.stream.Collectors;
 
+public class CustomerUserDetails extends User implements UserDetails {
 
-public class InstaUserDetails extends User implements UserDetails {
-
-    public InstaUserDetails(final User user) {
+  public CustomerUserDetails(final User user) {
         super(user);
     }
 

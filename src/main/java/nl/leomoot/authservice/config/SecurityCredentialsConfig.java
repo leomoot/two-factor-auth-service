@@ -1,8 +1,7 @@
-package com.clone.instagram.authservice.config;
+package nl.leomoot.authservice.config;
 
-
-import com.clone.instagram.authservice.service.JwtTokenManager;
-import com.clone.instagram.authservice.service.UserService;
+import nl.leomoot.authservice.service.JwtTokenManager;
+import nl.leomoot.authservice.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpMethod;
@@ -38,7 +37,6 @@ public class SecurityCredentialsConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
     private UserService userService;
-
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -91,5 +89,4 @@ public class SecurityCredentialsConfig extends WebSecurityConfigurerAdapter {
         source.registerCorsConfiguration("/**", config);
         return new CorsFilter(source);
     }
-
 }

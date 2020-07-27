@@ -1,6 +1,9 @@
-package com.clone.instagram.authservice.service;
+package nl.leomoot.authservice.service;
 
-import dev.samstevens.totp.code.*;
+import dev.samstevens.totp.code.CodeVerifier;
+import dev.samstevens.totp.code.DefaultCodeGenerator;
+import dev.samstevens.totp.code.DefaultCodeVerifier;
+import dev.samstevens.totp.code.HashingAlgorithm;
 import dev.samstevens.totp.exceptions.QrGenerationException;
 import dev.samstevens.totp.qr.QrData;
 import dev.samstevens.totp.qr.QrGenerator;
@@ -8,7 +11,6 @@ import dev.samstevens.totp.qr.ZxingPngQrGenerator;
 import dev.samstevens.totp.secret.DefaultSecretGenerator;
 import dev.samstevens.totp.secret.SecretGenerator;
 import dev.samstevens.totp.time.SystemTimeProvider;
-import dev.samstevens.totp.time.TimeProvider;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import static dev.samstevens.totp.util.Utils.getDataUriForImage;
@@ -16,9 +18,11 @@ import static dev.samstevens.totp.util.Utils.getDataUriForImage;
 @Service
 @Slf4j
 public class TotpManager {
+  
+    private CodeVerifier verifier = new DefaultCodeVerifier(new DefaultCodeGenerator(), new SystemTimeProvider());
+    private SecretGenerator generator = new DefaultSecretGenerator();
 
     public String generateSecret() {
-        SecretGenerator generator = new DefaultSecretGenerator();
         return generator.generate();
     }
 
@@ -46,10 +50,7 @@ public class TotpManager {
         return getDataUriForImage(imageData, mimeType);
     }
 
-    public boolean verifyCode(String code, String secret) {
-        TimeProvider timeProvider = new SystemTimeProvider();
-        CodeGenerator codeGenerator = new DefaultCodeGenerator();
-        CodeVerifier verifier = new DefaultCodeVerifier(codeGenerator, timeProvider);
+    public boolean verifyCode(String code, String secret) {   
         return verifier.isValidCode(secret, code);
     }
 }

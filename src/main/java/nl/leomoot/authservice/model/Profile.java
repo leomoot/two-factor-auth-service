@@ -1,4 +1,4 @@
-package com.clone.instagram.authservice.model;
+package nl.leomoot.authservice.model;
 
 import lombok.*;
 import java.util.Date;

@@ -1,4 +1,4 @@
-package com.clone.instagram.authservice.exception;
+package nl.leomoot.authservice.exception;
 
 
 public class UsernameAlreadyExistsException extends RuntimeException {

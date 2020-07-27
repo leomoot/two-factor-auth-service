@@ -1,15 +1,15 @@
-package com.clone.instagram.authservice.endpoint;
+package nl.leomoot.authservice.endpoint;
 
 
-import com.clone.instagram.authservice.exception.BadRequestException;
-import com.clone.instagram.authservice.exception.EmailAlreadyExistsException;
-import com.clone.instagram.authservice.exception.UsernameAlreadyExistsException;
-import com.clone.instagram.authservice.model.Profile;
-import com.clone.instagram.authservice.model.Role;
-import com.clone.instagram.authservice.model.User;
-import com.clone.instagram.authservice.payload.*;
-import com.clone.instagram.authservice.service.TotpManager;
-import com.clone.instagram.authservice.service.UserService;
+import nl.leomoot.authservice.exception.BadRequestException;
+import nl.leomoot.authservice.exception.EmailAlreadyExistsException;
+import nl.leomoot.authservice.exception.UsernameAlreadyExistsException;
+import nl.leomoot.authservice.model.Profile;
+import nl.leomoot.authservice.model.Role;
+import nl.leomoot.authservice.model.User;
+import nl.leomoot.authservice.payload.*;
+import nl.leomoot.authservice.service.TotpManager;
+import nl.leomoot.authservice.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;

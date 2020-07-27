@@ -1,4 +1,4 @@
-package com.clone.instagram.authservice.payload;
+package nl.leomoot.authservice.payload;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

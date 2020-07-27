@@ -1,4 +1,4 @@
-package com.clone.instagram.authservice.exception;
+package nl.leomoot.authservice.exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
