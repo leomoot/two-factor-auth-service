@@ -27,8 +27,11 @@ import java.net.URI;
 @Slf4j
 public class AuthEndpoint {
 
-    @Autowired private UserService userService;
-    @Autowired private TotpManager totpManager;
+    @Autowired 
+    private UserService userService;
+    
+    @Autowired 
+    private TotpManager totpManager;
 
     @PostMapping("/signin")
     public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest) {
