@@ -26,17 +26,10 @@ import javax.servlet.http.HttpServletResponse;
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class SecurityCredentialsConfig extends WebSecurityConfigurerAdapter {
 
-    @Autowired
-    private UserDetailsService userDetailsService;
-
-    @Autowired
-    private JwtConfig jwtConfig;
-
-    @Autowired
-    private JwtTokenManager tokenProvider;
-
-    @Autowired
-    private UserService userService;
+    @Autowired private UserDetailsService userDetailsService;
+    @Autowired private JwtConfig jwtConfig;
+    @Autowired private JwtTokenManager tokenProvider;
+    @Autowired private UserService userService;
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {

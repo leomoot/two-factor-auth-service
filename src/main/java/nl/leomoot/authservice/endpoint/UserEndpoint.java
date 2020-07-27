@@ -18,8 +18,7 @@ import org.springframework.web.bind.annotation.*;
 @Slf4j
 public class UserEndpoint {
 
-    @Autowired
-    private UserService userService;
+    @Autowired private UserService userService;
 
     @GetMapping(value = "/users/{username}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> findUser(@PathVariable("username") String username) {
@@ -40,7 +39,7 @@ public class UserEndpoint {
     }
 
     @GetMapping(value = "/users/me", produces = MediaType.APPLICATION_JSON_VALUE)
-    @PreAuthorize("hasRole('USER') or hasRole('FACEBOOK_USER')")
+    @PreAuthorize("hasRole('USER')")
     @ResponseStatus(HttpStatus.OK)
     public UserSummary getCurrentUser(@AuthenticationPrincipal CustomerUserDetails userDetails) {
         return UserSummary

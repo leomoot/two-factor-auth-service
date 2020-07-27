@@ -25,20 +25,11 @@ import nl.leomoot.authservice.repository.UserRepository;
 @Slf4j
 public class UserService {
 
-    @Autowired 
-    private PasswordEncoder passwordEncoder;
-    
-    @Autowired 
-    private UserRepository userRepository;
-    
-    @Autowired 
-    private AuthenticationManager authenticationManager;
-    
-    @Autowired 
-    private JwtTokenManager jwtTokenManager;
-    
-    @Autowired 
-    private TotpManager totpManager;
+    @Autowired private PasswordEncoder passwordEncoder;
+    @Autowired private UserRepository userRepository;
+    @Autowired private AuthenticationManager authenticationManager;
+    @Autowired private JwtTokenManager jwtTokenManager;
+    @Autowired private TotpManager totpManager;
 
     public String loginUser(String username, String password) {
        Authentication authentication = authenticationManager
