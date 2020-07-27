@@ -42,7 +42,7 @@ public class TotpManager {
         try {
             imageData = generator.generate(data);
         } catch (QrGenerationException e) {
-           log.error("unable to generate QrCode");
+           log.error("unable to generate QR-code");
         }
 
         String mimeType = generator.getImageMimeType();

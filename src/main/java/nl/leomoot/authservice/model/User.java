@@ -14,6 +14,7 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 import java.time.Instant;
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -42,7 +43,7 @@ public class User {
         this.password = password;
         this.email = email;
         this.active = true;
-        this.roles = new HashSet<>() {{ new Role("USER"); }};
+        this.roles = new HashSet<>(Arrays.asList(new Role("USER")));
     }
 
     @Id
