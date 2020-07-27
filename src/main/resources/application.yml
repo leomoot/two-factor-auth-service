@@ -6,21 +6,13 @@ spring:
     mongodb:
       database: auth
 
-  security:
-    basic:
-      enable: false
+security:
+  basic:
+    enable: false
 
-  jwt:
-    uri: /auth/**
-    header: Authorization
-    prefix: Bearer
-    expiration: 86400
-    secret: JwtSecretKey
-
-  feign:
-    client:
-      config:
-        default:
-          connectTimeout: 5000
-          readTimeout: 5000
-          loggerLevel: basic
+jwt:
+  uri: /auth/**
+  header: Authorization
+  prefix: Bearer
+  expiration: 86400
+  secret: JwtSecretKey
