@@ -9,7 +9,7 @@
 	<packaging>jar</packaging>
 
 	<name>two-factor-auth-service</name>
-	<description>Spring security jwt and social login</description>
+	<description>Spring security two factor authentication</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
@@ -113,6 +113,11 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+					<layers>
+						<enabled>true</enabled>
+					</layers>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>
