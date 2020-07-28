@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "CodeLens (Launch) - AuthServiceApplication",
+            "request": "launch",
+            "mainClass": "nl.leomoot.authservice.AuthServiceApplication",
+            "projectName": "two-factor-auth-service"
+        },
+        {
+            "type": "java",
             "name": "Debug (Launch) - Current File",
             "request": "launch",
             "mainClass": "${file}"
