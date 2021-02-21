@@ -25,7 +25,7 @@
 
 		<embedmongo-spring.version>1.3.1</embedmongo-spring.version>
 		<jsonwebtoken.version>0.9.1</jsonwebtoken.version>
-		<spring-cloud.version>Hoxton.SR6</spring-cloud.version>		
+		<spring-cloud.version>Hoxton.SR10</spring-cloud.version>		
 		<totp.version>1.7</totp.version>
 	</properties>
 
